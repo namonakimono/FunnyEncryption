@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="aes, encryption, decryption, fake" />
+    <title>Modified Unsafe AES Encryption for Fun</title>
+
+    <link type="text/css" href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="/stylesheets/styles.css" rel="stylesheet">
+    <script type="text/javascript" src="/javascripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="/javascripts/main.js"></script>
+
+  </head>
+  <body class="container-fluid" onload="decInit()">
+
+  <div class="centering"><a href="/" target="_blank"><button class="btn btn-default btn-block btn-lg">Go to the encryption page.</button></a></div>
+
+  <h1>Decryption</h1>
+  <hr />
+  <div class="centering">
+
+    <h4>Decryption key</h4>
+    <input id="dec-key" type="text" class="form-control" placeholder="key for real text...">
+    <h4>Encrypted text</h4>
+    <textarea id="dec-text" class="form-control" rows="10" placeholder="real text..."></textarea>
+    <hr />
+
+    <button class="btn btn-primary btn-lg" onclick="runDec()">Decrypt</button>
+    <hr />
+    <h4>Decrypted text</h4>
+    <textarea readonly id="decrypted-text" class="form-control" rows="20" placeholder="Decrypted text..."></textarea>
+
+    <div class="top-space-3ex"></div>
+    <div class="centering"><a href="/" target="_blank"><button class="btn btn-default btn-block btn-lg">Go to the encryption page.</button></a></div>
+  </div>
+  </body>
