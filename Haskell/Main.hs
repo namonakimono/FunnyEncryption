@@ -1,6 +1,7 @@
 import Enc
 import System.Environment
 import System.IO
+import System.IO.Extra
 
 main :: IO ()
 main = do
@@ -9,8 +10,8 @@ main = do
   args <- getArgs
   case args of
     ["enc", pswd1, pswd2, file1, file2, ofile] -> do
-      real <- readFile file1
-      fake <- readFile file2
+      real <- readFileUTF8 file1
+      fake <- readFileUTF8 file2
       let code = simpleEnc (pswd1, real) (pswd2, fake)
       putStrLn $ code
       putStrLn $ "Above is encrypted code."
@@ -18,7 +19,7 @@ main = do
       writeFile ofile code
 
     ["dec", pswd, file, ofile] -> do
-      code <- readFile file
+      code <- readFileUTF8 file
       let text = simpleDec (pswd, code)
       putStrLn $ text
       putStrLn "Above is the decrypted text."
