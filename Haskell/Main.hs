@@ -16,7 +16,7 @@ main = do
       putStrLn $ code
       putStrLn $ "Above is encrypted code."
       putStrLn $ "Saved in " ++ ofile ++ "."
-      writeFile ofile code
+      writeFileUTF8 ofile code
 
     ["dec", pswd, file, ofile] -> do
       code <- readFileUTF8 file
@@ -24,6 +24,6 @@ main = do
       putStrLn $ text
       putStrLn "Above is the decrypted text."
       putStrLn $ "Saved in " ++ "ofile" ++ "."
-      writeFile ofile text
+      writeFileUTF8 ofile text
 
     _ -> putStrLn "Invalid use."
