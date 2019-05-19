@@ -11,7 +11,7 @@ It takes me quite a long time to strugle to handle Unicode and Utf-8 encoding.
 
 -}
 
-module Enc where
+module EncDec where
 
 import Data.Char (chr)
 import Data.Algorithms.KMP

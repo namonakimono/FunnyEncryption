@@ -12,11 +12,11 @@ decrypt (someother, code) = &'"%&!)%& -- Yet another ‘code’
 
 ```
 
-The funny ‘encryption’ is written in Haskell; the demo pages are hosted by Node.js on port 8084. In the root folder, there are `start` and `stop` shells for starting and stoping the server.
+This funny ‘encryption’ is written in Haskell; internally, it uses AES encryption with *electronic codebook* mode. The demo pages are hosted by Node.js on port 8084. In the root folder, there are `start` and `stop` shells for starting and stoping the server.
 
 Source files for Enc/Dec functions and a simple cmd interface are in the (sub)folder Haskell.
 
-The default name of the complied executable file should be `encdec` and it is must be added to the `$PATH` so that it can be accessed directly in terminal. (The JavaScripts in demo pages directly invoke `encdec`.)
+The name of the complied executable file should be `FunnyEnc` and it is must be added to the `$PATH` so that it can be accessed directly in terminal. (The JavaScripts in demo pages directly invoke `FunnyEnc`.)
 
 
 ----
@@ -41,7 +41,7 @@ The problem comes to mind in April 2019 and the basic idea (naive solution) was 
 
 ----
 
-I know nothing about cryptography; it seems that the algorithm looks unsafe overall due to the fixed `SEPARATOR` and the real text being half size of the encoded text. However, for improvement, I think that it is possible to:
+I know nothing about cryptography; it seems that the algorithm looks unsafe overall. For example, the `SEPARATOR` is fixed and the real text is half size of the encoded text. However, I think that it is possible to do the following for some improvement.
 
 - Generate the `SEPARATOR`s from the `key`s instead of using fixed ones; also, we can use different `SEPARATOR` for real text and fake text.
 

@@ -52,7 +52,7 @@ function runEnc(){
 				// document.getElementById("encrypted-text").readOnly = true;
 			}
 			else {
-				alert("Encryption failed. Do you set keys for both?")
+				alert("Encryption failed. Do you install FunnyEnc executable correctly?")
 			}
 	   }
  });
@@ -87,7 +87,7 @@ function runDec(){
 				// document.getElementById("decrypted-text").readOnly = true;
 			}
 			else {
-				alert('Decryption failed.\nPossible reasons:\nText to be decrypted is invalid (eg: length is not a multiple of 16)')
+				alert('Decryption failed.\nPossible reasons:\n1. Text to be decrypted is invalid. (eg: length is not a multiple of 16)\n2. FunnyEnc executable is not installed correctly.')
 			}
 	   }
  });

@@ -1,4 +1,4 @@
-import Enc
+import EncDec
 import System.Environment
 import System.IO
 import System.IO.Extra

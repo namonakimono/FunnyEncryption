@@ -20,7 +20,7 @@ function enc(req, res, next) {
       fs.writeFile(fakeFile, fakeText, function(err){
         if(err){console.log(err); res.send({status: "fail", msg: err.toString() })}
 
-        exec("encdec " + "enc " +  realKey + " " + fakeKey + " " + realFile  + " " + fakeFile + " " + encryptedFile, function(err){
+        exec("FunnyEnc " + "enc " +  realKey + " " + fakeKey + " " + realFile  + " " + fakeFile + " " + encryptedFile, function(err){
           if(err){console.log(err); res.send({status: "fail", msg: err.toString() });}
           else {
               console.log("Text encrypted.");

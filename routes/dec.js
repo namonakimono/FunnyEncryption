@@ -14,7 +14,7 @@ function dec(req, res, next) {
 
     fs.writeFile(decFile, decText, function(err){
     if(err){console.log(err); res.send({status: "fail", msg: err.toString() })}
-      exec("encdec " + "dec " +  decKey + " " + decFile + " " + decryptedFile, function(err){
+      exec("FunnyEnc " + "dec " +  decKey + " " + decFile + " " + decryptedFile, function(err){
         if(err){console.log(err); res.send({status: "fail", msg: err.toString() });}
         else {
           console.log("Text decrypted.");
