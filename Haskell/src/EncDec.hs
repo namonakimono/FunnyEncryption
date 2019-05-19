@@ -120,10 +120,10 @@ key2 = "fake"
 
 
 realText :: String
-realText = "\128522I love you! ლ(′◉❥◉｀ლ)"
+realText = "\128522You are awesome. 你很棒棒哦。"
 
 fakeText :: String
-fakeText = "\128546You hate me..."
+fakeText = "\128546You are not awesome. 你没很棒棒哦。"
 
 test1 decKey = putStrLn $ curry simpleDec decKey $ simpleEnc (key1, realText) (key2, fakeText)
 
