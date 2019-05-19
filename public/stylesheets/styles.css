@@ -1,8 +1,8 @@
 body{
-	/* Setting the default text color, size, page background and a font stack: */
-	/*color:#fcfcfc;*/
-	/*background-color:#355664;*/
-	font-family: Georgia, Helvetica, Arial, sans-serif;
+  /* Setting the default text color, size, page background and a font stack: */
+  /*color:#fcfcfc;*/
+  /*background-color:#355664;*/
+  font-family: Georgia, Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -19,10 +19,14 @@ h4 {
 }
 
 .top-space-1ex {
-	padding-top: 1ex;
+  padding-top: 1ex;
 }
 
 
 .top-space-3ex {
-	padding-top: 3ex;
+  padding-top: 3ex;
+}
+
+#git-repo {
+  font-size: smaller;
 }
