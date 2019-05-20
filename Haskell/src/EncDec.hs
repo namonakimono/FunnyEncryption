@@ -21,6 +21,7 @@ import Data.Hash.MD5
 import qualified Data.ByteString.Char8 as C8
 import qualified Data.ByteString as B
 import Codec.Binary.UTF8.String as U8
+import Data.ByteString.Base64 as B64
 
 type Code = String
 type MKey = String
@@ -30,8 +31,9 @@ data Phase = RealText | FakeText
   deriving (Eq, Show)
 
 
--- auxiliary functions for handling String, ByteString, and Utf-8
+fromRight (Right x) = x
 
+-- auxiliary functions for handling String, ByteString, and Utf-8
 toStr :: ByteString -> String
 toStr = U8.decode . B.unpack
 
@@ -84,18 +86,18 @@ sepStr RealText  = "$InMiddle$<<<<<<"
 sepStr FakeText = ">>>>>>$InMiddle$"
 
 
-simpleEnc :: (MKey, String) -> (MKey, String) -> String
+simpleEnc :: (MKey, String) -> (MKey, String) -> ByteString
 simpleEnc (pswd1, real) (pswd2, fake) =
   let (key1, key2) = (md5s (Str pswd1), md5s (Str pswd2))
       code1 = aesEncStrInterface RealText key1 real
       code2 = aesEncStrInterface FakeText key2 fake
-  in  C8.unpack $ code1 `B.append` code2
+  in  code1 `B.append` code2
 
 
-simpleDec :: (MKey, String) -> String
+simpleDec :: (MKey, ByteString) -> String
 simpleDec (pswd, code) =
   let key = md5s (Str pswd)
-  in  throwAwayUselessPart . toStr $ ecbDecrypt (initAES256 key) (C8.pack code)
+  in  throwAwayUselessPart . toStr $ ecbDecrypt (initAES256 key) code
 
 throwAwayUselessPart :: String -> String
 throwAwayUselessPart str =
@@ -120,12 +122,15 @@ key2 = "fake"
 
 
 realText :: String
-realText = "\128522You are awesome. 你很棒棒哦。"
+realText = "\128522 You are awesome. 你很棒棒哦。"
 
 fakeText :: String
-fakeText = "\128546You are not awesome. 你没很棒棒哦。"
+fakeText = "\128546 You are not awesome. 你没很棒棒哦。"
 
 test1 decKey = putStrLn $ curry simpleDec decKey $ simpleEnc (key1, realText) (key2, fakeText)
+
+test2 decKey = putStrLn . curry simpleDec decKey . fromRight . B64.decode . toBStr .
+                toStr . B64.encode $ simpleEnc (key1, realText) (key2, fakeText)
 
 chrtest1 = putStrLn . toStr . toBStr $ realText
 chrtest2 = putStrLn . C8.unpack . C8.pack $ realText

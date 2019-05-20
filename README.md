@@ -3,11 +3,11 @@
 A funny ‘encryption algorithm’ and its [demo pages](http://enc.yozora.moe).
 
 ```
-let code = encrypt (123, "You are awesome.") (456, "You are not awesome.")
+let code = encrypt ("real", "You are awesome.") ("fake", "You are not awesome.")
 
-decrypt (123, code) = "You are awesome."
+decrypt ("real", code) = "You are awesome."
 
-decrypt (456, code) = "You are not awesome."
+decrypt ("fake", code) = "You are not awesome."
 
 decrypt (someother, code) = &'"%&!)%& -- Yet another ‘code’
 
@@ -51,3 +51,11 @@ I know nothing about cryptography. Although AES is used, it still seems that the
 - When we cannot find either `SEPARATOR` from the decrypted data, we can randomly pick decrypted bits instead of always using the first half of it.
 
 ----
+
+Another fucking stuff is that the text in *textarea* element is regarded as UTF-8 by default by most modern web browsers. That is, we must save and read files using UTF-8 encoding. However, the encrypted ByteStream is not always valid UTF-8 sequence. As a workaround, we first encode the encrypted ByteStream in Base64, and ‘wrap it’ in UTF-8.
+
+```
+UTF-8 in Browser -> UTF-8 in files -> read as binary for encrypting -> 
+convert to ByteString -> output encrypted ByteString -> 
+convert to Base64 -> convert to (wrap in) UTF-8
+```

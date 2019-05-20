@@ -15,21 +15,16 @@ function enc(req, res, next) {
     var fakeFile = "/tmp/" + randomDir + "/fake.txt";
     var encryptedFile = "/tmp/" + randomDir + "/encrypted.txt";
 
-    fs.writeFile(realFile, realText, function(err){
-      if(err){console.log(err); res.send({status: "fail", msg: err.toString() })}
-      fs.writeFile(fakeFile, fakeText, function(err){
-        if(err){console.log(err); res.send({status: "fail", msg: err.toString() })}
+    fs.writeFileSync(realFile, realText, 'utf8');
+    fs.writeFileSync(fakeFile, fakeText, 'utf8');
 
-        exec("FunnyEnc " + "enc " +  realKey + " " + fakeKey + " " + realFile  + " " + fakeFile + " " + encryptedFile, function(err){
-          if(err){console.log(err); res.send({status: "fail", msg: err.toString() });}
-          else {
-              console.log("Text encrypted.");
-              var encryptedText = fs.readFileSync(encryptedFile, 'utf8');
-              // console.log(encryptedText);
-              res.send({status: "success", encryptedText: encryptedText});
-          }
-        });
-      });
+    exec("FunnyEnc " + "enc " +  realKey + " " + fakeKey + " " + realFile  + " " + fakeFile + " " + encryptedFile, function(err){
+      if(err){console.log(err); res.send({status: "fail", msg: err.toString() });}
+      else {
+          console.log("Text encrypted.");
+          var encryptedText = fs.readFileSync(encryptedFile, 'utf8');
+          res.send({status: "success", encryptedText: encryptedText});
+      }
     });
   });
 }

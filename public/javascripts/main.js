@@ -15,8 +15,8 @@ function encInit(){
 	document.getElementById('real-text').value = templateRealText;
 	document.getElementById('fake-text').value = templateFakeText;
 
-	document.getElementById('real-key').value = "123";
-	document.getElementById('fake-key').value = "456";
+	document.getElementById('real-key').value = "real";
+	document.getElementById('fake-key').value = "fake";
 }
 
 function runEnc(){
@@ -59,7 +59,7 @@ function runEnc(){
 }
 
 function decInit(){
-	document.getElementById("dec-key").value = '123';
+	document.getElementById("dec-key").value = 'fake';
 	document.getElementById("dec-text").value = templateDecText;
 }
 

@@ -12,17 +12,14 @@ function dec(req, res, next) {
     var decFile = "/tmp/" + randomDir + "/encrypted.txt";
     var decryptedFile = "/tmp/" + randomDir + "/decrypted.txt";
 
-    fs.writeFile(decFile, decText, function(err){
-    if(err){console.log(err); res.send({status: "fail", msg: err.toString() })}
-      exec("FunnyEnc " + "dec " +  decKey + " " + decFile + " " + decryptedFile, function(err){
-        if(err){console.log(err); res.send({status: "fail", msg: err.toString() });}
-        else {
-          console.log("Text decrypted.");
-          var decryptedText = fs.readFileSync(decryptedFile, 'utf8');
-          // console.log(decryptedText);
-          res.send({status: "success", decryptedText: decryptedText});
-        }
-      });
+    fs.writeFileSync(decFile, decText, 'utf8');
+    exec("FunnyEnc " + "dec " +  decKey + " " + decFile + " " + decryptedFile, function(err){
+      if(err){console.log(err); res.send({status: "fail", msg: err.toString() });}
+      else {
+        console.log("Text decrypted.");
+        var decryptedText = fs.readFileSync(decryptedFile, 'utf8');
+        res.send({status: "success", decryptedText: decryptedText});
+      }
     });
   });
 }
