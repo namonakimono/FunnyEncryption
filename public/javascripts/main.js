@@ -1,7 +1,7 @@
 templateRealText = '😊 You are awesome. 你很棒棒哦。'
 templateFakeText = '😢 You are not awesome. 你没很棒棒哦。'
 
-templateDecText = ')«Ák&\'èýõ¢9ÊPR¶|Ë8 IT2Kq\'µa#««§£Ùºsý¨Á"í	^X¬ÆÚÅÓlÏ6F&út¥XZ½KHcCÝ2H^ò\nà7ÜNÉTO;I¾}u¸ì¿î}zÁQÚ%\nÐ:¿k'
+templateDecText = 'eiiox2kDvrUFYI/Kf78oI6LD71qdM/EZf7GElYqMRILYy5t8wvPoe9bD5ZP9wqAjX8qaxarqvtbZWe4O8BClVf8PJhK9Z6iAjIsCW7k0H8YNJ+zbE6ltj6G+L/JscZSM2X5NfmEenMeM5MHY1mEBY/CYLFxyD2aFiZGRzZMbed0='
 
 var randomDir = Math.random().toString(36).substring(7);
 
